@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 名空间->当前对应得Dao的全限定类名-->
+<mapper namespace="com.qf.dao.ClassesDao">
+
+    <!--手动映射
+    id  标识当前resultMap的唯一标识
+    type 映射的对象
+
+    column 代表数据库的列名
+    property 代表实体类的属性名
+    -->
+    <resultMap id="BaseResult" type="com.qf.pojo.Classes">
+        <!-- 声明主键对应-->
+        <id column="u_id" property="uid"></id>
+        <!-- 声明其他字段-->
+        <result column="u_name" property="uname"></result>
+        <result column="u_pass" property="upass"></result>
+        <result column="u_email" property="uemail"></result>
+        <result column="u_gender" property="ugender"></result>
+    </resultMap>
+    <!-- id的属性跟dao中的方法名 对应
+        resultType 代表你返回的类型
+
+        reusltMap 使用自定义的映射
+    -->
+    <select id="findAll" resultMap="BaseResult">
+    select * from user;
+    </select>
+    
+    <select id="findById" resultMap="BaseResult">
+        select * from user where uid=#{uuid}
+    </select>
+    
+    <select id="findByName" resultMap="BaseResult">
+        select * from user where uname=#{uuname}
+    </select>
+
+</mapper>

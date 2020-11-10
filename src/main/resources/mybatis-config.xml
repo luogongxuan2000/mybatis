@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--  mybtis配置-->
+<configuration>
+    <!--加载数据库连接信息资源文件 放置上configruation最上方-->
+    <properties resource="db.properties"></properties>
+    <!--配置别名-->
+    <typeAliases>
+        <!--直接配置单个实体对象 type 全限定类名 alias 别名-->
+        <typeAlias type="com.qf.pojo.User" alias="user"></typeAlias>
+        <!--给包下实体 自动形成别名 为首字母小写全名 例user-->
+        <!--<package name="com.qf.pojo"></package>-->
+    </typeAliases>
+
+
+
+    <!-- 当前选中得环境-->
+    <environments default="development">
+        <!-- 当前环境得数据库配置-->
+        <environment id="development">
+            <!-- 事务管理-->
+            <transactionManager type="JDBC"/>
+            <!-- 数据源配置-->
+            <dataSource type="POOLED">
+                <!--驱动-->
+                <property name="driver" value="${driver}"/>
+                <!-- &得转义&amp-->
+                <property name="url" value="${url}"/>
+                <property name="username" value="${name}"/>
+                <property name="password" value="${password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--资源路径-->
+        <mapper resource="mapper/UserMapper.xml"></mapper>
+        <mapper resource="mapper/ClassesMapper.xml"></mapper>
+     <!--使用url时(resources以外)  类名 必须相同
+        <mapper url=""></mapper>-->
+    </mappers>
+</configuration>
