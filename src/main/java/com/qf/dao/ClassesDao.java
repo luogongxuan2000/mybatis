@@ -10,7 +10,7 @@ public interface ClassesDao {
 
     List<Classes> findAll();
 
-    User findById(@Param("uuid") int id);
+    Classes findById(@Param("uuid") int id);
 
-    User findByName(@Param("uuname") String name);
+    List<Classes> findByName(@Param("uuname") String name);
 }

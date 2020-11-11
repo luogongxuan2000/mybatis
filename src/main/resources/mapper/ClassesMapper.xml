@@ -31,11 +31,11 @@
     </select>
     
     <select id="findById" resultMap="BaseResult">
-        select * from user where uid=#{uuid}
+        select * from user where u_id=#{uuid}
     </select>
     
     <select id="findByName" resultMap="BaseResult">
-        select * from user where uname=#{uuname}
+        select * from user where u_name=#{uuname}
     </select>
 
 </mapper>

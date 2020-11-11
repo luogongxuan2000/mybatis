@@ -35,7 +35,7 @@ public class TestMyBatisClasses {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         ClassesDao mapper = sqlSession.getMapper(ClassesDao.class);
-        User byId = mapper.findById(3);
+        Classes byId = mapper.findById(3);
         System.out.println(byId);
     }
 
@@ -46,7 +46,10 @@ public class TestMyBatisClasses {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();
         ClassesDao mapper = sqlSession.getMapper(ClassesDao.class);
-        User res = mapper.findByName("你好");
-        System.out.println(res);
+        List<Classes> res = mapper.findByName("你好");
+        for (Classes cl
+                :res) {
+            System.out.println(cl);
+        }
     }
 }

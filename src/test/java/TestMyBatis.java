@@ -119,7 +119,7 @@ public class TestMyBatis {
         System.out.println("受影响的行数为==="+i);
     }
     //增加
-    @Test
+    /*@Test
     public void testInsert() throws IOException {
         String resource = "mybatis-config.xml";
         InputStream resourceAsStream = Resources.getResourceAsStream(resource);
@@ -133,7 +133,20 @@ public class TestMyBatis {
         user.setU_name("你好");
         int i = mapper.insertNew(user);
         System.out.println("受影响的行数为==="+i+"当前新增id为"+user.getU_id());
+    }*/
 
+    @Test
+    public void testFindInsert() throws IOException {
+        String resource = "mybatis-config.xml";
+        InputStream inputStream = Resources.getResourceAsStream(resource);
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        UserDao mapper = sqlSession.getMapper(UserDao.class);
+        List<User> all = mapper.findAll();
+        for (User user :
+                all) {
+            System.out.println(user);
 
+        }
     }
 }
