@@ -6,4 +6,8 @@ public class UserController {
 
         System.out.println("This is a userController");
     }
+
+    public static void test() {
+
+    }
 }
